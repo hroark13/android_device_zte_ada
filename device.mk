@@ -23,5 +23,5 @@ PRODUCT_COPY_FILES += \
 
 # Recovery
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/recovery.fstab \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/fstab
+    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
+    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/fstab
