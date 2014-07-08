@@ -27,8 +27,9 @@ TARGET_BOARD_PLATFORM := msm8610
 TARGET_BOOTLOADER_BOARD_NAME := MSM8610
 
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
-#TARGET_USES_QCOM_BSP := true
-#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+TARGET_USES_QCOM_BSP := true
+COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+TARGET_USES_OVERLAY := true
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
@@ -37,16 +38,38 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 4294967296
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_HAS_LARGE_FILESYSTEM := true
 
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 utags.blkdev=/dev/block/platform/msm_sdcc.1/by-name/utags vmalloc=400M androidboot.write_protect=0 androidboot.secure_hardware=0
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 vmalloc=400M androidboot.write_protect=0 androidboot.secure_hardware=0
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --dt device/zte/ada/dt.img --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
 TARGET_PREBUILT_KERNEL := device/zte/ada/kernel
 
+# Include path
+TARGET_SPECIFIC_HEADER_PATH := device/zte/ada/include
+
+# Make sure this folder exists so display stuff doesn't fail
+$(shell mkdir -p $(TARGET_OUT_INTERMEDIATES)/KERNEL_OBJ/usr/)
+
+# Vold
+BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
+BOARD_VOLD_MAX_PARTITIONS := 24
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+BOARD_UMS_LUNFILE := "/sys/devices/platform/msm_hsusb/gadget/lun0/file"
+TARGET_USE_CUSTOM_SECOND_LUN_NUM := 1
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+
+
+
 # Recovery
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"font_10x18.h\"
 BOARD_SUPPRESS_EMMC_WIPE := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+#TARGET_RECOVERY_PIXEL_FORMAT := BGRA_8888
+TARGET_RECOVERY_PIXEL_FORMAT := RGBX_8888
+#TARGET_RECOVERY_PIXEL_FORMAT := RGB_565
+TARGET_PROVIDES_RECOVERY_INIT_RC := true
+TARGET_RECOVERY_INITRC := device/zte/ada/recovery/root/init.rc
+#BOARD_CUSTOM_GRAPHICS := ../../../device/zte/ada/recovery/graphics.c
+BOARD_HAS_NO_SELECT_BUTTON := true
 
 #TWRP
 DEVICE_RESOLUTION := 480x800

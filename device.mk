@@ -23,5 +23,31 @@ PRODUCT_COPY_FILES += \
 
 # Recovery
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/recovery.fstab \
-    $(LOCAL_PATH)/recovery.fstab:recovery/root/etc/fstab
+    $(LOCAL_PATH)/recovery/root/charger:recovery/root/charger \
+    $(LOCAL_PATH)/recovery/root/default.prop:recovery/root/default.prop \
+    $(LOCAL_PATH)/recovery/root/file_contexts:recovery/root/file_contexts \
+    $(LOCAL_PATH)/recovery/root/fstab.goldfish:recovery/root/fstab.goldfish \
+    $(LOCAL_PATH)/recovery/root/fstab.qcom:recovery/root/fstab.qcom \
+    $(LOCAL_PATH)/recovery/root/icon_ftm.png:recovery/root/icon_ftm.png \
+    $(LOCAL_PATH)/recovery/root/init:recovery/root/init \
+    $(LOCAL_PATH)/recovery/root/init.qcom.class_core.sh:recovery/root/init.qcom.class_core.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.class_main.sh:recovery/root/init.qcom.class_main.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.early_boot.sh:recovery/root/init.qcom.early_boot.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.factory.sh:recovery/root/init.qcom.factory.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.ril.sh:recovery/root/init.qcom.ril.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.sh:recovery/root/init.qcom.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.ssr.sh:recovery/root/init.qcom.ssr.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.syspart_fixup.sh:recovery/root/init.qcom.syspart_fixup.sh \
+    $(LOCAL_PATH)/recovery/root/init.qcom.usb.sh:recovery/root/init.qcom.usb.sh \
+    $(LOCAL_PATH)/recovery/root/init.rc:recovery/root/init.rc \
+    $(LOCAL_PATH)/recovery/root/property_contexts:recovery/root/property_contexts \
+    $(LOCAL_PATH)/recovery/root/seapp_contexts:recovery/root/seapp_contexts \
+    $(LOCAL_PATH)/recovery/root/sepolicy:recovery/root/sepolicy \
+    $(LOCAL_PATH)/recovery/root/ueventd.goldfish.rc:recovery/root/ueventd.goldfish.rc \
+    $(LOCAL_PATH)/recovery/root/ueventd.qcom.rc:recovery/root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/recovery/root/ueventd.rc:recovery/root/ueventd.rc \
+    $(LOCAL_PATH)/recovery/root/etc/fstab:recovery/root/etc/fstab \
+    $(LOCAL_PATH)/recovery/root/etc/recovery.fstab:recovery/root/etc/recovery.fstab \
+    $(LOCAL_PATH)/recovery/root/sbin/trigger_modemload:recovery/root/sbin/trigger_modemload \
+    $(LOCAL_PATH)/recovery/root/sbin/usbconfig:recovery/root/sbin/trigger_modemload
+
